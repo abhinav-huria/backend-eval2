@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BED Eval2</title>
+</head>
+<body>
+    <div id="cont">
+        <h2>Feedback Form</h2>
+        <label for="fname">First Name</label><br/>
+  <input name="fname" placeholder="Enter your first name" id="firstname" /><br/>
+  <label for="fname">Last Name</label><br/>
+  <input name="lname" placeholder="Enter your last name" id="lastname" /><br/>
+  <label for="lname">Last Name</label><br/>
+  <input name="email" placeholder="Enter your email id" id="emailid" /><br/>
+  <label for="feedback">Feedback</label><br />
+  <input name="feedback" placeholder="Enter your feedback here" id="feed" required/><br/>
+<button type="button" onclick="submitForm()">Submit</button>
+    </div>
+   
+  </div>
+  <script>
+      let fname1=document.getElementById("firstname");
+let lname1=document.getElementById("lastname");
+let email1=document.getElementById("emailid");
+let feedback1=document.getElementById("feed");
+
+
+
+function submitForm() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4) {
+    fname1.value="";
+lname1.value="";
+email1.value="";
+feedback1.value="";
+      }}
+    let fname=fname1.value;
+let lname=lname1.value;
+let email=email1.value;
+let feedback=feedback1.value;
+
+
+
+    xhttp.open("POST","/submitFeedback");
+xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xhttp.send("fname=" + fname + "&lname="+ lname + "&email=" + email + "&feedback=" + feedback) ;
+  
+
+    
+}
+  </script>
+</body>
+
+</html>
